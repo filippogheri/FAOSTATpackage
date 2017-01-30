@@ -19,4 +19,14 @@ translateCountryCode(data, from, to, oldCode)
 The function translate any country code scheme to another if both
 are in the FAOcountryProfile
 }
+\examples{
+
+## test.dt <- 
+##   FAOSTAT(name = c("Grapes_AreaHarv"), domainCode = "QC",
+##           itemCode = 560, elementCode = 2312, yearRange = 2010)
+## test.dt <- test.dt$entity
+## test.dt <- 
+##   translateCountryCode(data = test.dt, from = "FAOST_CODE", 
+##                        to = "ISO2_CODE")
+}
 

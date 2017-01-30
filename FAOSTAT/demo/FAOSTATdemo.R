@@ -6,13 +6,12 @@
 
 # Install the package -----------------------------------------------------
 
-# if(!is.element("FAOSTAT", .packages(all.available = TRUE)))
-#   install_github(username = "filippogheri", repo = "FAOSTATpackage", 
-#                  subdir = "FAOSTAT")
+if(!is.element("FAOSTAT", .packages(all.available = TRUE)))
+  install_github(repo = "filippogheri/FAOSTATpackage", subdir = "FAOSTAT")
 library(FAOSTAT)
-# help(package = "FAOSTAT")
-# vignette("FAOSTAT", package = "FAOSTAT")
 library(data.table)
+help(package = "FAOSTAT")
+# vignette("FAOSTAT", package = "FAOSTAT")
 
 # FAOsearch function ------------------------------------------------------
 
@@ -54,7 +53,19 @@ tradeFlow.lst <- with(tradeFlow.dt,
 
 # fillCountryCode function ------------------------------------------------
 
+test.dt <- 
+  FAOSTAT(name = c("Grapes_AreaHarv"), domainCode = "QC",
+          itemCode = 560, elementCode = 2312, yearRange = 2010)
+test.dt <- test.dt$entity
+test.dt <- 
+  fillCountryCode(data = test.dt, country = "Country", outCode = "ISO2_CODE")
 
 # translateCountryCode function -------------------------------------------
 
-
+test.dt <- 
+  FAOSTAT(name = c("Grapes_AreaHarv"), domainCode = "QC",
+          itemCode = 560, elementCode = 2312, yearRange = 2010)
+test.dt <- test.dt$entity
+test.dt <- 
+  translateCountryCode(data = test.dt, from = "FAOST_CODE", 
+                       to = "ISO2_CODE")

@@ -60,11 +60,7 @@ FAOSTAT <-
     
     ## Country set
     if (!is.null(countrySet)) {
-      if (!is.numeric(countrySet)) {
-        stop("Please, provide a numeric vector for the year range.")
-      } else {
-        countrySet <- paste(countrySet, collapse = ",")
-      }
+      countrySet <- paste(countrySet, collapse = ",")
     }
     
     ## Query
@@ -217,9 +213,9 @@ FAOSTAT <-
       }
     }
     entity.dt <- arrange(with(faoData, faoData[FAOST_CODE %in%
-                                                 FAOcountryProfile[, "FAOST_CODE"], ]), FAOST_CODE, Year)
+                                                 FAOcountryProfile[, FAOST_CODE], ]), FAOST_CODE, Year)
     region.dt <- arrange(with(faoData, faoData[!(FAOST_CODE %in%
-                                                   FAOcountryProfile[, "FAOST_CODE"]), ]), FAOST_CODE, Year)
+                                                   FAOcountryProfile[, FAOST_CODE]), ]), FAOST_CODE, Year)
     cat(paste("\n Number of variables successfully downloaded: ",
               sum(results.dt$Success), " out of ", NROW(results.dt), "\n\n", sep = ""))
     if (toDataFrame) {

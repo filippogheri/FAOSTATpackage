@@ -33,6 +33,7 @@ FAOcountryProfile <-
           "SHORT_NAME", "ABBR_FAO_NAME_SP", "UN_YEAR_START_INFO",
           "UN_YEAR_END_INFO", "FORMER_MEMBER_INFO", "COMPOSITION_INFO", 
           "UN_STATUS_INFO")]
+FAOcountryProfile <- data.table(FAOcountryProfile)
 save(FAOcountryProfile, file = "FAOcountryProfile.RData")
 
 # FAOmetaTable ------------------------------------------------------------
@@ -207,8 +208,8 @@ cat("FAOSTATdemo      Demonstration for the FAOSTAT package\n",
     file = "FAOSTAT/demo/00Index")
 
 # ## Include tests
-# dir.create("FAOSTAT/tests")
-# file.copy("Codes/tests", "FAOSTAT", recursive = TRUE)
+dir.create("FAOSTAT/tests")
+file.copy("Codes/tests", "FAOSTAT", recursive = TRUE)
 
 ## Use roxygen to build the documentation
 roxygenize("FAOSTAT")
@@ -230,7 +231,7 @@ system("R CMD build FAOSTAT")
 system("R CMD check --as-cran --timings FAOSTAT")
 
 ## Install package from local directory
-library(FAOSTAT)
+# library(FAOSTAT)
 
 ###########################################################################
 ## End

@@ -4,18 +4,27 @@
 \alias{fillCountryCode}
 \title{A function to get country code when not available in data.}
 \usage{
-fillCountryCode(country, data, outCode = "FAOST_CODE")
+fillCountryCode(data, country, outCode = "FAOST_CODE")
 }
 \arguments{
+\item{data}{The data frame to be matched}
+
 \item{country}{The column name of the data which contains
 the country name}
-
-\item{data}{The data frame to be matched}
 
 \item{outCode}{The output country code system, defaulted to FAO standard.}
 }
 \description{
 This function can be useful when a dataset provided does not have
 a country code available.
+}
+\examples{
+
+## test.dt <- 
+##   FAOSTAT(name = c("Grapes_AreaHarv"), domainCode = "QC",
+##           itemCode = 560, elementCode = 2312, yearRange = 2010)
+## test.dt <- test.dt$entity
+## test.dt <- 
+##   fillCountryCode(data = test.dt, country = "Country", outCode = "ISO2_CODE")
 }
 

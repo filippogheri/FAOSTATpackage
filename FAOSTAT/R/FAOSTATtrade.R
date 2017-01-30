@@ -42,11 +42,7 @@ FAOSTATtrade <-
     
     ## Country set
     if (!is.null(countrySet)) {
-      if (!is.numeric(countrySet)) {
-        stop("Please, provide a numeric vector for the year range.")
-      } else {
-        countrySet <- paste(countrySet, collapse = ",")
-      }
+      countrySet <- paste(countrySet, collapse = ",")
     }
     
     ## Query
@@ -184,14 +180,14 @@ FAOSTATtrade <-
 
     entity.dt <- 
       arrange(faoData[faoData$`Reporter FAOST_CODE` %in%
-                        FAOcountryProfile[, "FAOST_CODE"] |
+                        FAOcountryProfile[, FAOST_CODE] |
                         faoData$`Partner FAOST_CODE` %in%
-                        FAOcountryProfile[, "FAOST_CODE"],], `Reporter FAOST_CODE`, Year)
+                        FAOcountryProfile[, FAOST_CODE],], `Reporter FAOST_CODE`, Year)
     region.dt <- 
       arrange(faoData[!faoData$`Reporter FAOST_CODE` %in%
-                        FAOcountryProfile[, "FAOST_CODE"] |
+                        FAOcountryProfile[, FAOST_CODE] |
                         !faoData$`Partner FAOST_CODE` %in%
-                        FAOcountryProfile[, "FAOST_CODE"],], `Reporter FAOST_CODE`, Year)
+                        FAOcountryProfile[, FAOST_CODE],], `Reporter FAOST_CODE`, Year)
     cat(paste("\n Number of variables successfully downloaded: ",
               sum(results.dt$Success), " out of ", NROW(results.dt), "\n\n", sep = ""))
     if (toDataFrame) {
