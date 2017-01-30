@@ -22,10 +22,3 @@ version can be installed by specifying the **ref** argument.
 library(devtools)
 install_github(repo = "filippogheri/FAOSTATpackage", subdir = "FAOSTAT")
 ```
-
-Vignettes and demos are available and please make use of them:
-
-```r
-vignette(topic = "FAOSTAT")
-demo(topic = "FAOSTATdemo")
-```
