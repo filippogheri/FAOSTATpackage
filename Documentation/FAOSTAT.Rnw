@@ -128,16 +128,14 @@ vignette("FAOSTAT", package = "FAOSTAT")
 \section{Data collection}
 \subsection{Download data from FAOSTAT}
 
-FAOSTAT is the largest agricultural database in the world. It contains data from land productivity to agricultural production and trade dating back from 1960 to the most recent available data. Detailed information on meta data, methods and standards can be found on the official website of FAOSTAT (\url{http://faostat3.fao.org/}) and the Statistics Division (ESS) (\url{http://www.fao.org/economic/ess/en/}).
+FAOSTAT is the largest agricultural database in the world. It contains data from land productivity to agricultural production and trade dating back from 1960 to the most recent available data. Detailed information on meta data, methods and standards can be found on the official website of FAOSTAT (\url{http://faostat.fao.org/}) and the Statistics Division (ESS) (\url{http://www.fao.org/economic/ess/en/}).
 
-In order to access to an indicator in FAOSTAT using the API, three pieces of information need to be provided: domain, item, and element codes. They are defined as:
+In order to access to an indicator in FAOSTAT using the API, at least two pieces of information need to be provided: domain and element codes. They are defined as:
 
 \begin{itemize}
   {\setlength\itemindent{48pt}\item[Domain Code]: \hfill\\ The domain
     associated with the data. For example, production, trade, prices
-    etc.}  {\setlength\itemindent{30pt}\item[Item Code]: \hfill\\
-    These are the codes relating to the commodity or product group
-    such as wheat, almonds, and aggregated item like "total cereals".}
+    etc.}  
   {\setlength\itemindent{49pt}\item[Element Code]: \hfill\\Lastly,
     this is the quantity/unit or data collection type associated with
     the commodity. Typical elements are quantity, value or
@@ -161,7 +159,7 @@ The \code{getFAOtoSYB} is a wrapper for the \code{getFAO} to batch download data
 FAOquery.df = data.frame(varName = c("arableLand", "cerealExp", "cerealProd"),
                          domainCode = c("RL", "TP", "QC"),
                          itemCode = c(6621, 1944, 1717),
-                         elementCode = c(5110, 5922, 5510),
+                         elementCode = c(5110, 2910, 2510),
                          stringsAsFactors = FALSE)
 
 ## Download the data from FAOSTAT
